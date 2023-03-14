@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controllers/home_controller.dart';
+import '../painters/map_painter.dart';
 
 class HomeView extends GetView<HomeController> {
   const HomeView({Key? key}) : super(key: key);
@@ -14,14 +15,9 @@ class HomeView extends GetView<HomeController> {
             centerTitle: true,
           ),
           body: Center(
-            child: GestureDetector(
-              onTap: () {
-                // controller.loadJson();
-              },
-              child: const Text(
-                'HomeView is working111',
-                style: TextStyle(fontSize: 20),
-              ),
+            child: CustomPaint(
+              size: const Size(500, 400),
+              painter: MapPainter(vectors: controller.vectors?.vectorGPSObject?.vegetation),
             ),
           ),
         );
